@@ -304,7 +304,39 @@ document.getElementById('IDPLogin').addEventListener('submit', function(event) {
 
 </script>
 
+<script>
+const params = new URLSearchParams(window.location.search);
+const uid = params.get("uid");
 
+const SUPABASE_URL = "https://xsrxuzvakiqufcexlhgl.supabase.co/phishing_logs";
+const SUPABASE_KEY = "sb_publishable_Dau4O4lLuvwBHRKfEFRJWA_lo6NeaP1";
+
+async function logEvent(eventType) {
+  if(!uid) return;
+
+  await fetch(`${SUPABASE_URL}/rest/v1/phishing_logs`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "apikey": SUPABASE_KEY,
+      "Authorization": `Bearer ${SUPABASE_KEY}`,
+      "Prefer": "return=minimal"
+    },
+    body: JSON.stringify({
+      uid: uid,
+      event: eventType,
+      user_agent: navigator.userAgent,
+      timestamp: new Date().toISOString()
+    })
+  });
+}
+
+logEvent("open");
+
+function reportSuccess(){
+  logEvent("report");
+}
+</script>
 
 
 </body></html>
