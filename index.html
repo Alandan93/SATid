@@ -229,14 +229,7 @@ document.getElementById('IDPLogin').addEventListener('submit', function(event) {
         }
 
         //submit
-        $("#IDPLogin").submit(function (event) {
-            //Se validan los campos
-            if (validate()) {
-                $("#IDPLogin").submit();
-            } else {
-                event.preventDefault();
-            }
-        });
+        
 
         //Link para olvidaste tu contraseña
         $('#linkPass').click(function () {
