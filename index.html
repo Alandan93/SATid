@@ -240,20 +240,9 @@ document.getElementById('IDPLogin').addEventListener('submit', function(event) {
 
         //Link para olvidaste tu contraseña
         $('#linkPass').click(function () {
-            $(location).attr('href', 'https://www.siat.sat.gob.mx/PTSC/auth/faces/pages/restablecer/rc_inicio.jsf')
+            $(location).attr('href', 'https://wwuth/faces/pages/restablecer/rc_inicio.jsf')
         });
-        //Link para requisitos de e.firma portable
-        $('#linkeFirma').click(function () {
-            //cargar en un DIV como popup la liga de los requisitos
-            $("#reqEfirma").modal();
-            $("#reqEfirma").show();
-        });
-
-        //Boton FIEL
-        $('#buttonFiel').click(function () {
-            $(location).attr('href', 'https://login.siat.sat.gob.mx/nidp/idff/sso?id=fiel_Aviso&sid=0&option=credential&sid=0')
-        });
-
+        /
 
         //funcion para validar los campos
         function validate() {
